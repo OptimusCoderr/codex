@@ -23,11 +23,74 @@ Steps taken to set up the raspberrypi OS.
 For VNC and SSH setup for raspberrypi can be done with this [link](https://thesecmaster.com/step-by-step-tutorial-to-set-up-vnc-on-raspberry-pi/).
 For more on raspi configurations and documentation check this [link](https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-networking).
 
+For the next steps you need good knowledge of how to use a Linux terminal. This [tutorial](https://youtu.be/KQlF7IfgZ28) is recommended.
 
-
-
+### Installing other versions of Python from Source on the pi
+You can change the version as you wish but this guide is for Python Version 3.9
+##### Update and Upgrade:
+First, make sure your Raspberry Pi is up to date by running the following commands:
 ```
-$ cd ../lorem
-$ npm install
-$ npm start
+sudo apt update
+sudo apt upgrade
 ```
+#### Install Dependencies:
+Install the dependencies required to build Python from source:
+```
+sudo apt install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev zlib1g-dev libssl-dev libreadline-dev libncurses5-dev libncursesw5-dev libgdbm-dev liblzma-dev libffi-dev uuid-dev libffi-dev liblzma-dev libsqlite3-dev libncurses5 libgdbm-compat-dev libgdbm-dev libssl-dev libreadline-gplv2-dev
+```
+#### Download and Compile Python:
+Now, you can download and compile Python 3.9. Here's how:
+```
+cd ~
+wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz
+tar -xf Python-3.9.7.tgz
+cd Python-3.9.7
+./configure --enable-optimizations
+make -j 4  # Adjust the number based on your Pi's resources
+sudo make altinstall
+```
+#### Verify Installation:
+After the installation is complete, you can verify that Python 3.9 is installed by running:
+```
+python3.9 --version
+```
+#### Cleanup:
+You can remove the downloaded files to free up space:
+```
+cd ~
+rm -rf Python-3.9.7 Python-3.9.7.tgz
+```
+To make use of the python version you nee to run your programs created in a virtual environment.
+
+#### Install virtualenv (if not already installed):
+Run the following command to install the virtualenv package:
+```
+sudo apt install python3.9-venv
+```
+#### Create a Virtual Environment:
+Navigate to the directory where you want to create your virtual environment. For example, you might create a venv directory within your home folder:
+```
+cd ~
+mkdir venv
+```
+Now, create the virtual environment by running:
+```
+python3.9 -m venv venv/myproject
+```
+Replace myproject with the name of your project. This will create a virtual environment named myproject within the venv directory
+
+#### Activate the Virtual Environment:
+To activate the virtual environment, run:
+```
+source venv/myproject/bin/activate
+```
+Now you can run your python programs with your new python version.
+
+
+
+
+
+
+
+
+
