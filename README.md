@@ -84,8 +84,11 @@ To activate the virtual environment, run:
 ```
 source venv/myproject/bin/activate
 ```
-Now you can run your python programs with your new python version.
+Now you can run your python programs with your new python version in the virtual envrionment.
 
+## Inferencing on the Raspberrypi
+Model or AI inferencing on the raspberrypi can be done from [here](https://www.tensorflow.org/lite/examples). Select the examples Tensorflow has made specially for the raspberrypi.
+For steps on using the coral tpu stick with the raspberrypi, check the [github repo](https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/raspberry_pi)
 
 
 
