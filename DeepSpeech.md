@@ -32,7 +32,7 @@ The conda version should be displayed at the end of the setup.
 
 ### How to create and delete a conda environment
 ```
-conda create --name venvna (replace venv in your preference)
+conda create --name venv (replace venv in your preference)
 ```
 
 To create an environment with a specific version of Python
